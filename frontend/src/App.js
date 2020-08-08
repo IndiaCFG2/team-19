@@ -15,12 +15,12 @@ class App extends Component {
      <>
       <Router>
         <Switch>
-          <Route exact path = "/dashboard" component = {DashBoard} />
-          <Route exact path = "/admin_login" component = {AdminLogin} />
-          <Route exact path = "/submit_feedback" component = {CitizenLogin} />
-          <Route exact path = "/private_feedback" component = {PrivateFeedback} />
-          <Route exact path = "/logout" component = {LogOut} />
-          <Route path = "/" component = {ErrorPage} />
+          <Route exact path = "/" component = {DashBoard} />                           // Base Landing Page
+          <Route exact path = "/admin_login" component = {AdminLogin} />               // Shift to Admin Login Page
+          <Route exact path = "/submit_feedback" component = {CitizenLogin} />         // Submit FeedBack
+          <Route exact path = "/private_feedback" component = {PrivateFeedback} />     // Submit Private FeedBack
+          <Route exact path = "/logout" component = {LogOut} />                        // LogOut
+          <Route path = "/" component = {ErrorPage} />                                 // Default Error Page
          </Switch> 
       </Router>
      </>

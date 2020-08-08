@@ -3,10 +3,7 @@ import "./NavBar.css"
 import {Link} from 'react-router-dom'
 import NavLogo from '../../assets/navlogo.png'
 
-function Test() {
-
-    const[search, setSearch] = useState("")
-
+function NavBar() {
     return (
         <div className = "NavBar">
             <div className = "NavBar__left">
@@ -18,7 +15,7 @@ function Test() {
             
             <div className = "NavBar__right">
                 <div className = "NavBar__right__content">
-                    <span className = "NavBar__right__option__1"> Hello,  </span>
+                    <span className = "NavBar__right__option__1"> Hello, Anonymous</span>
                     <Link to = "private_feedback">
                         <span className = "NavBar__right__option__2"> Private Feedback </span>
                     </Link>
@@ -44,4 +41,4 @@ function Test() {
     )
 }
 
-export default Test
+export default NavBar

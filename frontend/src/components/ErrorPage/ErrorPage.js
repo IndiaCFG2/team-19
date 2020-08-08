@@ -28,7 +28,6 @@ export default class ErrorPage extends Component {
             </h3>
 
             <div className = "ErrorPage__button">
-              
               <button>
                 <ArrowBackIosRoundedIcon style = {{marginRight : "15px"}}/>
                 Back To Safety

@@ -17,6 +17,9 @@ export default class Row extends Component {
                     downvotes: 5,
                     name: "Team - 19",
                     ministry_assigned: 1,
+                    userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
+                    rating: "5",                      // Rating for the Policy
+                    policyDecision: "0"               // Decision regarding Policy
                 },
                 {
                   id: 2,
@@ -26,6 +29,10 @@ export default class Row extends Component {
                   downvotes: 5,
                   name: "Team - 19",
                   ministry_assigned: 1,
+                  userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
+                  rating: "5",                      // Rating for the Policy
+                  policyDecision: "0"               // Decision regarding Policy
+                  
                 },
                 {
                   id: 3,
@@ -35,6 +42,9 @@ export default class Row extends Component {
                   downvotes: 5,
                   name: "Team - 19",
                   ministry_assigned: 1,
+                  userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
+                  rating: "5",                      // Rating for the Policy
+                  policyDecision: "0"               // Decision regarding Policy
                 }
             ]
         }  

@@ -1,0 +1,13 @@
+.PrivateFeedBack{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+    max-width: 500px;
+}
+
+/* .PrivateFeedBack__outerContainer{
+    background-image: url("https://webneel.com/wallpaper/sites/default/files/images/04-2013/island-beach-scenery-wallpaper.preview.jpg");
+    background-size: cover;
+    background-position: center;
+} */

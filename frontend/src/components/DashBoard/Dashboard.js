@@ -5,20 +5,21 @@ import NavBar from '../NavBar/NavBar'
 import Banner from '../Banner/Banner'
 import Row from '../Rows/Row'
 
-class App extends Component {
+class DashBoard extends Component {
   render(){
     return (
      <> 
         <NavBar />
         <Banner />
-        <Row title = "Ministry _ 1" />
-        <Row title = "Ministry _ 2" />
-        <Row title = "Ministry _ 3" />
-        <Row title = "Ministry _ 4" />
-        <Row title = "Ministry _ 5" />
+        <Row title = "Financial Ministry" />
+        <Row title = "Health Ministry" />
+        <Row title = "Agricultural Ministry" />
+        <Row title = "Defence Ministry" />
+        <Row title = "Environmental Ministry" />
+        <Row title = "Education Ministry" />
      </>
     );
   }
 }
 
-export default App;
+export default DashBoard;
