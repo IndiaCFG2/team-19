@@ -9,6 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'db.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
@@ -21,9 +22,14 @@ class Feedback(db.Model):
 	downvotes = db.Column(db.Integer)
 	name = db.Column(db.String(100))
 	ministry_assigned = db.Column(db.String(200))
+	userSentiment = db.Column(db.String(200))
 	rating =  db.Column(db.String(200))
 	policy =  db.Column(db.String(200))
-	def __init__(self,email,title,text,upvotes,downvotes,name,ministry_assigned,rating,policy):
+	language = db.Column(db.String(200))
+	userAge = db.Column(db.Integer)
+	userPincode = db.Column(db.Integer)
+	def __init__(self,email,title,text,upvotes,downvotes,name,
+		ministry_assigned,userSentiment,rating,policy,language,userAge,userPincode):
 		self.email = email
 		self.title = title
 		self.text = text
@@ -31,8 +37,12 @@ class Feedback(db.Model):
 		self.downvotes = downvotes
 		self.name = name
 		self.ministry_assigned = ministry_assigned
+		self.userSentiment = userSentiment
 		self.rating = rating
 		self.policy = policy
+		self.language = language
+		self.userAge = userAge
+		self.userPincode = userPincode
 
 
 class User(db.Model):
@@ -60,7 +70,7 @@ users_schema =  UserSchema(many = True)
 class FeedbackSchema(ma.SQLAlchemySchema):
 	class Meta:
 		model = Feedback
-		fields = ("id","email","title","text","upvotes","downvotes","name","ministry_assigned","rating","policy")
+		fields = ("id","email","title","text","upvotes","downvotes","name","ministry_assigned","userSentiment","rating","policy","language","userAge","userPincode")
 
 feedback_schema = FeedbackSchema()
 feedbacks_schema =  FeedbackSchema(many = True)
@@ -77,10 +87,15 @@ def add_feedback():
 	downvotes = request.json['downvotes']
 	name = request.json['name']
 	ministry_assigned = request.json['ministry_assigned']
+	userSentiment = request.json['userSentiment']
 	rating = request.json['rating']
 	policy = request.json['policy']
+	language = request.json['language']
+	userAge = request.json['userAge']
+	userPincode = request.json['userPincode']
 
-	new_feedback = Feedback(email,title,text,upvotes,downvotes,name,ministry_assigned,rating,policy)
+
+	new_feedback = Feedback(email,title,text,upvotes,downvotes,name,ministry_assigned,userSentiment,rating,policy,language,userAge,userPincode)
 
 	db.session.add(new_feedback)
 	db.session.commit()
@@ -114,8 +129,12 @@ def update_feedback(id):
 	downvotes = request.json['downvotes']
 	name = request.json['name']
 	ministry_assigned = request.json['ministry_assigned']
+	userSentiment = request.json['userSentiment']
 	rating = request.json['rating']
 	policy = request.json['policy']
+	language = request.json['language']
+	userAge = request.json['userAge']
+	userPincode = request.json['userPincode']
 
 	feedback.email = email
 	feedback.title = title
@@ -124,8 +143,12 @@ def update_feedback(id):
 	feedback.downvotes = downvotes
 	feedback.name = name
 	feedback.ministry_assigned = ministry_assigned
+	feedback.userSentiment = userSentiment
 	feedback.rating = rating
 	feedback.policy = policy
+	feedback.language = language
+	feedback.userAge = userAge
+	feedback.userPincode = userPincode
 	db.session.commit()
 
 	return feedback_schema.jsonify(feedback)
