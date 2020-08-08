@@ -8,7 +8,7 @@ const logout = () => {
     return(
         <>
         <NavBar/>
-            <Redirect to = '/dashboard' />
+            <Redirect to = '/' />                           // Redirect To Dashboard
         </>
     )
 }

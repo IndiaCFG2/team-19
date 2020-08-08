@@ -5,21 +5,15 @@
     margin-right: 20px;
     color: black;
     background-color: lightblue;
-    overflow-x: scroll;
 }
 
-.Row::-webkit-scrollbar{
-    display: none;
-}
-
-.Row__cards{
+.Row__display{
     display: flex;
-    overflow-y: hidden;
     overflow-x: scroll;
-    padding: 20px;
-    justify-content: space-evenly;
+    padding: 10px;
 }
 
-.Row__cards::-webkit-scrollbar{
+.Row__display::-webkit-scrollbar{
     display: none;
 }
+

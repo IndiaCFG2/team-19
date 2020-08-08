@@ -4,6 +4,14 @@ import './ErrorPage.css'
 
 
 export default class ErrorPage extends Component {
+
+
+
+  backToSafety(){
+    alert("Moving Back to Safety")
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <>
@@ -28,9 +36,9 @@ export default class ErrorPage extends Component {
             </h3>
 
             <div className = "ErrorPage__button">
-              <button>
+              <button onClick = {() => {this.backToSafety()}}>
                 <ArrowBackIosRoundedIcon style = {{marginRight : "15px"}}/>
-                Back To Safety
+                    Back To Safety
               </button>
             </div>
       </div>

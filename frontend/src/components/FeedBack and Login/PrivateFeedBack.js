@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import './PrivateFeedBack.css'
 import SendIcon from '@material-ui/icons/Send';
-export default class PrivateFeedBack extends Component {
+import NavBar from '../NavBar/NavBar'
 
+
+export default class PrivateFeedBack extends Component {
   constructor(props){
     super(props);
 
     this.state  = {
-        id: 0,                            // user Id
+        id: 0,                            //User Id      This will be 0 always, we will be dealing with this at backend
+        email: '',                        //User Email   This will be null always as we are dealing with anonymuos user
         title: '',                        // Policy Name
         name: "Anonymuos",                // User Name
         text: "",                         // FeedBack
-        upvotes: 1,                       // Upvotes
-        downvotes:1,                      // Downvotes
+        upvotes: 0,                       // Upvotes
+        downvotes:0,                      // Downvotes
         ministry_assigned: "1",           // Ministry Assigned
-        userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
+        userSentiment: "-1",              // User Sentiment regarding the policy (Yes = 1, No = -1, Neutral = 0)
         rating: "5",                      // Rating for the Policy
-        policyDecision: "0"               // Decision regarding Policy
+        policyDecision: "0",              // Decision regarding Policy    0-> scrap it,, 1-> Can be implemented better
+        language: "0"                     // Language Hindi / English
     }
 
     this.onChangeUserSentiment = this.onChangeUserSentiment.bind(this)
@@ -25,7 +29,14 @@ export default class PrivateFeedBack extends Component {
     this.onChangeText = this.onChangeText.bind(this);
     this.onChangeMinistryAssigned = this.onChangeMinistryAssigned.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this)
+    this.onChangeLanguage = this.onChangeLanguage.bind(this)
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChangeLanguage(event){
+    this.setState({
+        language: event.target.value
+    })
   }
 
   onChangeUserSentiment(event){
@@ -65,14 +76,47 @@ export default class PrivateFeedBack extends Component {
   }
 
   onSubmit(event){
+    event.preventDefault();
      alert("FeedBack Submitted Successfully")
+
+     const user_feedback = {
+          id: this.state.id,
+          email: this.state.email,
+          text: this.state.text,
+          title: this.state.title,
+          name: this.state.name,
+          upvotes: this.state.upvotes,
+          downvotes: this.state.downvotes,
+          ministry_assigned: this.state.ministry_assigned,
+          userSentiment: this.state.userSentiment,
+          rating: this.state.rating,
+          policyDecision: this.state.policyDecision,
+          language: this.state.language
+     }
+
+
+     console.log(user_feedback)
+     this.setState({
+        id: 0,
+        email: '',
+        text: '',
+        title: '',
+        name: "Anonymous",
+        upvotes: 0,
+        downvotes: 0,
+        ministry_assigned: "1",
+        userSentiment: "-1",
+        rating: "5",
+        policyDecision: "0"
+     })
   }
 
 
 
   render() {
     return (
-      <div className = "PrivateFeedBack__outerContainer" >
+      <>
+      <NavBar />
       <div className = "PrivateFeedBack">
         <form onSubmit = {this.onSubmit}>
 
@@ -98,6 +142,39 @@ export default class PrivateFeedBack extends Component {
               onChange = {this.onChangeText}
               style = {{height: "150px", marginTop: "10px", resize: "none"}}
             />
+          </div>
+
+          {/* Language Selected by the user */}
+
+          <div className = 'form-group'>
+                <label>What do you feel about this policy :</label>
+                <br/>
+                <div className = "form-check form-check-inline">
+                  <input className = "form-check-input"
+                      type = "radio"
+                      name = "LanguageSelectedByUser"
+                      id = "hindi"
+                      value = "0"
+                      checked = {this.state.language === '0'}
+                      onChange = {this.onChangeLanguage}
+                  />
+
+                  <label className = "form-check-label">Hindi</label>
+                </div>
+
+
+                <div className = "form-check form-check-inline">
+                  <input className = "form-check-input"
+                      type = "radio"
+                      name = "LanguageSelectedByUser"
+                      id = "english"
+                      value = "1"
+                      checked = {this.state.language === '1'}
+                      onChange = {this.onChangeLanguage}
+                  />
+
+                  <label className = "form-check-label">English</label>
+                </div>
           </div>
 
           {/* Are You Happy with this Policy */}
@@ -340,7 +417,7 @@ export default class PrivateFeedBack extends Component {
           </div>
         </form>   
       </div>
-      </div>
+      </>
     )
   }
 }

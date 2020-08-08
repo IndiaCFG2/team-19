@@ -11,7 +11,7 @@ export default class RowCard extends Component {
         super(props);
 
         this.state = {
-            id: props.key,                                         // Id assigned to User
+            id: props.card_data.id,                                // Id assigned to User
             title: props.card_data.title,                          // Policy Name
             name: props.card_data.name,                            // User Name
             upvotes: props.card_data.upvotes,                      // Upvotes
@@ -20,10 +20,25 @@ export default class RowCard extends Component {
             ministry_assigned:"1",                                 // Ministry Assigned
             userSentiment:"-1",                                    // User Sentiment regarding the policy (Yes, No, Neutral)
             rating: "5",                                           // Rating for the Policy
-            policyDecision: "0"                                    // Decision regarding the policy
+            policyDecision: "0",                                   // Decision regarding the policy
         }
     }
 
+    upVote = (id) => {
+        alert("UpVoted")
+        console.log(id, this.state.upvotes)
+        this.setState({
+            upvotes : this.state.upvotes + 1
+        })
+    }
+
+    downVote = (id) => {
+        alert("DownVoted")
+        console.log(id, this.state.upvotes)
+        this.setState({
+            downvotes : this.state.downvotes - 1
+        })
+    }
 
     render() {
         return (
@@ -41,15 +56,19 @@ export default class RowCard extends Component {
 
             <div className = "RowCard__bottom">
                 <div className = "RowCard__bottom__content">
-                    <IconButton style = {{marginTop: "-7px"}}>
-                        <ArrowUpwardRoundedIcon />
+                    <IconButton onClick = {() => {this.upVote(this.state.id)}} 
+                        className = "RowCard__bottom__content__Icon_1"
+                    >
+                        <ArrowUpwardRoundedIcon  />
                     </IconButton>
                     {this.state.upvotes}
                 </div>
 
                 <div className = "RowCard__bottom__content">
-                    <IconButton style = {{marginTop: "-7px"}}>
-                        <ArrowDownwardRoundedIcon />
+                    <IconButton onClick = {() => {this.downVote(this.state.id)}} 
+                        className = "RowCard__bottom__content__Icon_2"
+                    >
+                        <ArrowDownwardRoundedIcon  />
                     </IconButton>
                     {this.state.downvotes}
                 </div>

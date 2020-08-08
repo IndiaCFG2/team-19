@@ -1,12 +1,12 @@
-
 .RowCard{
-    object-fit: contain;
     padding: 20px;
     border: 1px solid black;
     margin: 10px;
-    height: 17rem;
+    width: 300px;
+    height: 18rem;
     border-radius: 2rem;
     background-color: white;
+    /* box-shadow: 0px 10px 53px 0px rgba(0,0,0,0.3) !important; */
 }
 
 .RowCard__title{
@@ -15,18 +15,16 @@
 }
 
 .RowCard__text{
+    padding: 20px;
     height: 130px;
+    width: 250px;
     margin-top: 10px;
     color: blue;
-    width: 200px;
+    overflow-wrap: break-word;
     overflow-y: scroll;
-    overflow-x: hidden;
     justify-content: center;
 }
 
-.RowCard__text::-webkit-scrollbar{
-    
-}
 
 .RowCard__name{
     margin-top: 5px;
@@ -39,5 +37,18 @@
 }
 
 .RowCard__bottom__content{
+    margin-top: 5px;
     display: flex;
+    align-items: center;
+}
+
+.RowCard__bottom__content__Icon_1{
+    background-color: whitesmoke;
+    box-shadow: 0px 10px 53px 0px rgba(0,0,0,0.3) !important;
+    color: #ec5e6f !important;
+}
+.RowCard__bottom__content__Icon_2{
+    background-color: whitesmoke;
+    box-shadow: 0px 10px 53px 0px rgba(0,0,0,0.3) !important;
+    color: #76e2b3 !important;
 }
