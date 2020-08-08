@@ -1,4 +1,6 @@
-# Team 19
+# Team 19 -  RubberDucks
+
+<p align="center"><img src="https://i.ibb.co/bXWTZ5v/voice.png" alt="voice" border="0"/ ></p>
 
 This application was built keeping in mind the requirements collected from the Civis Organization, as a part of CFG 2020. 
 
@@ -8,7 +10,7 @@ Mentioned in the Individual README's, as applicable.
 
 ## Usage
 
-Navigate [here]() to see our product live in action!
+Navigate [here](https://civis19.surge.sh) to see our product live in action!
 
 Head over [here]() to test our backend. 
 
