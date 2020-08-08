@@ -1,0 +1,43 @@
+
+.RowCard{
+    object-fit: contain;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 10px;
+    height: 17rem;
+    border-radius: 2rem;
+    background-color: white;
+}
+
+.RowCard__title{
+    font-size: 900;
+    color: red;
+}
+
+.RowCard__text{
+    height: 130px;
+    margin-top: 10px;
+    color: blue;
+    width: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    justify-content: center;
+}
+
+.RowCard__text::-webkit-scrollbar{
+    
+}
+
+.RowCard__name{
+    margin-top: 5px;
+}
+
+.RowCard__bottom{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.RowCard__bottom__content{
+    display: flex;
+}

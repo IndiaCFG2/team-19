@@ -1,0 +1,25 @@
+.Row{
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: black;
+    background-color: lightblue;
+    overflow-x: scroll;
+}
+
+.Row::-webkit-scrollbar{
+    display: none;
+}
+
+.Row__cards{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+    justify-content: space-evenly;
+}
+
+.Row__cards::-webkit-scrollbar{
+    display: none;
+}
