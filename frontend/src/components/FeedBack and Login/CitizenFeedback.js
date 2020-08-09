@@ -113,12 +113,12 @@ export default class CitizenFeedback extends Component {
           userPincode: this.state.userPincode
      }
 
-    //  axios.post('http://civis19.herokuapp.com/feedback', user_feedback) 
-    //   .then(res => console.log(res.data))
-    //   .catch(function(error){
-    //     console.log(error)
-    //   },
-    //   this.props.history.push('/'))
+     axios.post('/feedback', user_feedback) 
+      .then(res => console.log(res.data))
+      .catch(function(error){
+        console.log(error)
+      },
+      this.props.history.push('/'))
 
 
      console.log(user_feedback)

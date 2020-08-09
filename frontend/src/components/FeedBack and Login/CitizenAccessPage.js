@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NavBar from '../NavBar/NavBar'
 import Banner from '../Banner/Banner'
 import Row from '../Rows/Row'
+import axios from 'axios'
 export default class CitizenAccessPage extends Component {
 
   constructor(props){
@@ -82,21 +83,21 @@ export default class CitizenAccessPage extends Component {
   //     })
   // }
 
-  // componentDidMount(){
-  //     axios.get("http://civis19.herokuapp.com/feedback/" + id)
-  //       .then(response => {
-  //         console.log("Response from API")
-  //         console.log(response)
-  //           this.setState({
-  //             feedBackForms: response.data
-  //           })
-  //            //this.setFeedBackForms();
-  //       })
-  //       .catch(function(error){
-  //         console.log(error)
-  //       },
-  //       this.props.history.push('/'))
-  // }
+  componentDidMount(){
+      axios.get("/feedback/" + this.state.id)
+        .then(response => {
+          console.log("Response from API")
+          console.log(response)
+            this.setState({
+              feedBackForms: response.data
+            })
+             //this.setFeedBackForms();
+        })
+        .catch(function(error){
+          console.log(error)
+        },
+        this.props.history.push('/'))
+  }
 
 
   render() {
