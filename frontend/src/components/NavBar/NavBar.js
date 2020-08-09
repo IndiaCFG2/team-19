@@ -98,7 +98,7 @@ function NavBar() {
                             :
                         <>
                             <span className = "NavBar__right__option__1"> Admin </span>
-                                <Link to = "/admin_login">
+                                <Link to = "/graph">
                                     <span className = "NavBar__right__option__2"> Login </span>
                                 </Link>
                         </>

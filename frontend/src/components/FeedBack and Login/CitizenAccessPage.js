@@ -75,12 +75,12 @@ export default class CitizenAccessPage extends Component {
 
   setFeedBackForms(){
       this.state.feedbackForm.map(res => {
-        if(res.id === id){
-           if(res.upvotes >= 4)
-               this.state.trending_feeds= [...this.state.trending_feeds, res]
+           if(res.upvotes >= 2){
+            this.state.trending_feeds= [...this.state.trending_feeds, res]
+           }
+               
            if(res.id === id)
               this.state.personal_feeds= [...this.state.personal_feeds, res]
-        }
       })
   }
 
@@ -108,12 +108,14 @@ export default class CitizenAccessPage extends Component {
 
   render() {
     this.setFeedBackForms()
+    console.log("Personal")
+    console.log(this.state.personal_feeds)
     return (
       <>
         <NavBar />
         <Banner />
-        <Row title = "Trending Feeds" feeds = {this.state.personal_feeds}/>
-        <Row title = "Your Submitted Feeds" feeds = {this.state.trending_feeds} />
+        <Row title = "Trending Feeds" feeds = {this.state.trending_feeds}/>
+        <Row title = "Your Submitted Feeds" feeds = {this.state.personal_feeds} />
       </>
     )
   }

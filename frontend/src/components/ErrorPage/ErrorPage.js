@@ -4,9 +4,6 @@ import './ErrorPage.css'
 
 
 export default class ErrorPage extends Component {
-
-
-
   backToSafety(){
     alert("Moving Back to Safety")
     this.props.history.push('/')
