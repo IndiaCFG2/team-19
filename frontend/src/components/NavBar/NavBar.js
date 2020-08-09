@@ -78,7 +78,7 @@ function NavBar() {
 
                         <>
                             <span className = "NavBar__right__option__1"> User </span>
-                             <Link to = "/user_login">
+                             <Link to = "/citizen_access_page">
                                 <span className = "NavBar__right__option__2"> Login </span>
                             </Link>   
                         </>

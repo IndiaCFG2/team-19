@@ -20,7 +20,7 @@ export default class CitizenFeedback extends Component {
         ministry_assigned: "1",           // Ministry Assigned
         userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
         rating: "5",                      // Rating for the Policy
-        policyDecision: "0",              // Decision regarding Policy
+        policy: "0",              // Decision regarding Policy
         userPincode: 0,                   // Pincode of the User
         userAge:0,                        // Users Age    
         language: '0'                     // Language Preference
@@ -70,7 +70,7 @@ export default class CitizenFeedback extends Component {
 
   onChangePolicyDecision(event){
     this.setState({
-      policyDecision: event.target.value
+      policy: event.target.value
     })
   }
 
@@ -107,7 +107,7 @@ export default class CitizenFeedback extends Component {
           ministry_assigned: this.state.ministry_assigned,
           userSentiment: this.state.userSentiment,
           rating: this.state.rating,
-          policyDecision: this.state.policyDecision,
+          policy: this.state.policy,
           language: this.state.language,
           userAge: this.state.userAge,
           userPincode: this.state.userPincode
@@ -133,7 +133,7 @@ export default class CitizenFeedback extends Component {
         ministry_assigned: "1",
         userSentiment: "-1",
         rating: "5",
-        policyDecision: "0",
+        policy: "0",
         language: "0",
         userAge: 0,
         userPincode: ""
@@ -285,7 +285,7 @@ export default class CitizenFeedback extends Component {
                       name = "UserFeelingAboutPolicy"
                       id = "ScrapIt"
                       value = "0"
-                      checked = {this.state.policyDecision === '0'}
+                      checked = {this.state.policy === '0'}
                       onChange = {this.onChangePolicyDecision}
                   />
 
@@ -300,7 +300,7 @@ export default class CitizenFeedback extends Component {
                       name = "UserFeelingAboutPolicy"
                       id = "CanBeImplementedBetter"
                       value = "1"
-                      checked = {this.state.policyDecision === '1'}
+                      checked = {this.state.policy === '1'}
                       onChange = {this.onChangePolicyDecision}
                   />
 

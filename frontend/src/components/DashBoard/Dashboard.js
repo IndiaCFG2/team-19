@@ -58,7 +58,7 @@ class DashBoard extends Component {
         console.log(response.data)
           this.setState({
             feedBackForms: response.data
-        })
+          })
           
       })
       .catch(function(error){
@@ -68,9 +68,7 @@ class DashBoard extends Component {
   }
 
   render(){
-    console.log("FeedBack Forms")
-    console.log(this.state.feedBackForms)
-    console.log(this.state.financeMinistry)
+    this.setFeedBackFormsforMinistries()
 
     return (
      <> 
@@ -80,9 +78,9 @@ class DashBoard extends Component {
         
         <Row title = "Financial Ministry" feeds = {this.state.financeMinistry}/>
         <Row title = "Health Ministry" feeds = {this.state.healthMinistry}/>
-        <Row title = "Agricultural Ministry" feeds = {this.state.agriculturalMinistry} />
-        <Row title = "Defence Ministry" feeds = {this.state.defenceMinistry} />
-        <Row title = "Environmental Ministry"  feeds = {this.state.environmentalMinistry}/>
+        <Row title = "Agricultural Ministry"  feeds = {this.state.agriculturalMinistry}/>
+        <Row title = "Defence Ministry"  feeds = {this.state.defenceMinistry}/>
+        <Row title = "Environmental Ministry" feeds = {this.state.environmentalMinistry} />
         <Row title = "Education Ministry" feeds = {this.state.educationMinistry}/>
      </>
     );

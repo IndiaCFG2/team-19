@@ -9,7 +9,6 @@ export default class Row extends Component {
 
         this.state = {
             title : props.title,
-            feeds: props.feeds,
             tile_data: [
                 {   id: 1,
                     title: "Hello",
@@ -92,15 +91,18 @@ export default class Row extends Component {
         <div className = "Row">
             <h2>{this.state.title}</h2>
             <div className = "Row__display">
-              
+
                 {
-                    this.state.tile_data.map(tileData => {
+                  this.props.feeds
+                  ?
+                    this.props.feeds.map(tileData => {
                         return <RowCard key = {tileData.id} card_data = {tileData} />
                     })
+                  :
 
-                  // this.state.feeds.map(tileData => {
-                  //     return <RowCard key = {tileData.id} card_data = {tileData} />
-                  // })
+                  this.state.tile_data.map(tileData => {
+                      return <RowCard key = {tileData.id} card_data = {tileData} />
+                  })
                   
                 }
            </div>

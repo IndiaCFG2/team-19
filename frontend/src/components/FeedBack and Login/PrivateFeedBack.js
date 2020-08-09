@@ -20,7 +20,7 @@ export default class PrivateFeedBack extends Component {
         ministry_assigned: "1",           // Ministry Assigned
         userSentiment: "-1",              // User Sentiment regarding the policy (Yes = 1, No = -1, Neutral = 0)
         rating: "5",                      // Rating for the Policy
-        policyDecision: "0",              // Decision regarding Policy    0-> scrap it,, 1-> Can be implemented better
+        policy: "0",              // Decision regarding Policy    0-> scrap it,, 1-> Can be implemented better
         language: "0",                     // Language Hindi / English
         userPincode: 0,
         userAge: 0,
@@ -57,7 +57,7 @@ export default class PrivateFeedBack extends Component {
 
   onChangePolicyDecision(event){
     this.setState({
-      policyDecision: event.target.value
+      policy: event.target.value
     })
   }
 
@@ -94,7 +94,7 @@ export default class PrivateFeedBack extends Component {
           ministry_assigned: this.state.ministry_assigned,
           userSentiment: this.state.userSentiment,
           rating: this.state.rating,
-          policyDecision: this.state.policyDecision,
+          policy: this.state.policy,
           language: this.state.language,
           userPincode: this.state.userPincode,
           userAge: this.state.userAge
@@ -121,7 +121,7 @@ export default class PrivateFeedBack extends Component {
         ministry_assigned: "1",
         userSentiment: "-1",
         rating: "5",
-        policyDecision: "0"
+        policy: "0"
      })
   }
 
@@ -248,7 +248,7 @@ export default class PrivateFeedBack extends Component {
                       name = "UserFeelingAboutPolicy"
                       id = "ScrapIt"
                       value = "0"
-                      checked = {this.state.policyDecision === '0'}
+                      checked = {this.state.policy === '0'}
                       onChange = {this.onChangePolicyDecision}
                   />
 
@@ -263,7 +263,7 @@ export default class PrivateFeedBack extends Component {
                       name = "UserFeelingAboutPolicy"
                       id = "CanBeImplementedBetter"
                       value = "1"
-                      checked = {this.state.policyDecision === '1'}
+                      checked = {this.state.policy === '1'}
                       onChange = {this.onChangePolicyDecision}
                   />
 
