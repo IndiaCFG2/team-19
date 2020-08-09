@@ -12,6 +12,33 @@
     padding: 10px;
 }
 
+.NavBar__IVR{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.NavBar__IVR__Message{
+    width: 20vw;
+    margin-top: 17px;
+    flex-direction: row;
+    margin-left: auto;
+    text-overflow: ellipsis;
+    text-align: center;
+    overflow: hidden;
+    font-size: 20px;
+    display: inline;
+}
+
+
+.NavBar__IVR__Call{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 20vw;
+    font-size: 30px;
+    font-weight: 800;
+}
+
 .NavBar__logo{
     margin-top: -7px;
     margin-left: 10px;
@@ -37,6 +64,7 @@
 }
 
 .NavBar__right__option__1{
+    text-align: left;
     font-size: 0.7rem;
     color: black
 }

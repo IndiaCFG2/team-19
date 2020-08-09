@@ -4,19 +4,80 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
 import Banner from '../Banner/Banner'
 import Row from '../Rows/Row'
+import axios from 'axios'
 
+const baseUrl = "https://civis19.herokuapp.com/";
 class DashBoard extends Component {
+  
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      feedBackForms: [],
+      financeMinistry: [],
+      healthMinistry: [],
+      agriculturalMinistry: [],
+      defenceMinistry: [],
+      environmentalMinistry:[],
+      educationMinistry: []      
+    }
+  }
+
+  // this.setFeedBackFormsforMinistries(){
+  //     this.state.feedBackForms.map(res => {
+  //       const m_assigned = res.ministry_assigned;
+  //       if(m_assigned === "1"){
+  //           financeMinistry: [...this.state.financeMinistry, res]
+  //       }else if(m_assigned === "2"){
+  //           healthMinistry: [...this.state.healthMinistry, res]
+  //       }else if(m_assigned === "3"){
+  //           agriculturalMinistry: [...this.state.agriculturalMinistry, res]
+  //       }else if(m_assigned === "4"){
+  //           defenceMinistry: [...this.state.defenceMinistry, res]
+  //       }else if(m_assigned === "5"){
+  //           environmentalMinistry: [...this.state.environmentalMinistry, res]
+  //       }else{
+  //           educationMinistry: [...this.state.educationMinistry, res]
+  //       }
+  //     })
+  // }
+
+  componentDidMount(){
+      axios.get("http://civis19cfg.herokuapp.com/feedback",{
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        console.log("Response from API")
+        console.log(response)
+          this.setState({
+            feedBackForms: response.data
+          })
+          // this.setFeedBackFormsforMinistries();
+      })
+      .catch(function(error){
+        console.log(error)
+      },
+      this.props.history.push('/'))
+  }
+
   render(){
+    console.log("FeedBack Forms")
+    console.log(this.state.feedBackForms)
+
     return (
      <> 
         <NavBar />
         <Banner />
-        <Row title = "Financial Ministry" />
-        <Row title = "Health Ministry" />
-        <Row title = "Agricultural Ministry" />
-        <Row title = "Defence Ministry" />
-        <Row title = "Environmental Ministry" />
-        <Row title = "Education Ministry" />
+        <Row title = "Financial Ministry" feeds = {this.state.financeMinistry}/>
+        <Row title = "Health Ministry" feeds = {this.state.healthMinistry}/>
+        <Row title = "Agricultural Ministry" feeds = {this.state.agriculturalMinistry} />
+        <Row title = "Defence Ministry" feeds = {this.state.defenceMinistry} />
+        <Row title = "Environmental Ministry"  feeds = {this.state.environmentalMinistry}/>
+        <Row title = "Education Ministry" feeds = {this.state.educationMinistry}/>
      </>
     );
   }

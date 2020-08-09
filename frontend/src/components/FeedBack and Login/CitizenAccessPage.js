@@ -8,6 +8,7 @@ export default class CitizenAccessPage extends Component {
       super(props);
 
       this.state = {
+        feedbackForms: [],
         trending_feeds : [
           {   id: 1,
             title: "Hello",
@@ -69,9 +70,34 @@ export default class CitizenAccessPage extends Component {
       }
   }
 
-  componentDidMount(){
-    //   trending_feeds = trending_feeds[this.state.trending_feeds, "AA"];
-  }
+    // setFeedBackForms(){
+  //     this.state.feedBackForms.map(res => {
+     
+  //       if(res.id === id){
+  //          if(res.upvotes >= 4)
+  //              trending_feeds: [...this.state.trending_feeds, res]
+  //          if(res.id === id)
+  //            personal_feeds : [...this.state.personal_feeds, res]
+  //       }
+  //     })
+  // }
+
+  // componentDidMount(){
+  //     axios.get("http://civis19.herokuapp.com/feedback/" + id)
+  //       .then(response => {
+  //         console.log("Response from API")
+  //         console.log(response)
+  //           this.setState({
+  //             feedBackForms: response.data
+  //           })
+  //            //this.setFeedBackForms();
+  //       })
+  //       .catch(function(error){
+  //         console.log(error)
+  //       },
+  //       this.props.history.push('/'))
+  // }
+
 
   render() {
     return (

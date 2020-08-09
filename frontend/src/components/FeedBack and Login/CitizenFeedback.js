@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './PrivateFeedBack.css'
 import SendIcon from '@material-ui/icons/Send';
 import NavBar from '../NavBar/NavBar';
+import { ThemeProvider } from '@material-ui/core';
+import axios from 'axios'
 export default class CitizenFeedback extends Component {
 
   constructor(props){
@@ -10,6 +12,7 @@ export default class CitizenFeedback extends Component {
     this.state  = {
         id: 0,                            // user Id
         title: '',                        // Policy Name
+        email: '',                        // User Mail Id
         name: "Anonymuos",                // User Name
         text: "",                         // FeedBack
         upvotes: 1,                       // Upvotes
@@ -17,7 +20,10 @@ export default class CitizenFeedback extends Component {
         ministry_assigned: "1",           // Ministry Assigned
         userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
         rating: "5",                      // Rating for the Policy
-        policyDecision: "0"               // Decision regarding Policy
+        policyDecision: "0",              // Decision regarding Policy
+        userPincode: 0,                   // Pincode of the User
+        userAge:0,                        // Users Age    
+        language: '0'                     // Language Preference
     }
 
     this.onChangeUserSentiment = this.onChangeUserSentiment.bind(this)
@@ -26,7 +32,28 @@ export default class CitizenFeedback extends Component {
     this.onChangeText = this.onChangeText.bind(this);
     this.onChangeMinistryAssigned = this.onChangeMinistryAssigned.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this)
+    this.onChangePincode = this.onChangePincode.bind(this)
+    this.onChangeAge = this.onChangeAge.bind(this)
+    this.onChangeLanguage = this.onChangeLanguage.bind(this)
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChangeLanguage(event){
+    this.setState({
+        language: event.target.value
+    })
+  }
+
+  onChangePincode(event){
+    this.setState({
+      userPincode: event.target.value
+    })
+  }
+
+  onChangeAge(event){
+    this.setState({
+      userAge: event.target.value
+    })
   }
 
   onChangeUserSentiment(event){
@@ -66,7 +93,51 @@ export default class CitizenFeedback extends Component {
   }
 
   onSubmit(event){
+    event.preventDefault();
      alert("FeedBack Submitted Successfully")
+
+     const user_feedback = {
+          id: this.state.id,
+          email: this.state.email,
+          text: this.state.text,
+          title: this.state.title,
+          name: this.state.name,
+          upvotes: this.state.upvotes,
+          downvotes: this.state.downvotes,
+          ministry_assigned: this.state.ministry_assigned,
+          userSentiment: this.state.userSentiment,
+          rating: this.state.rating,
+          policyDecision: this.state.policyDecision,
+          language: this.state.language,
+          userAge: this.state.userAge,
+          userPincode: this.state.userPincode
+     }
+
+    //  axios.post('http://civis19.herokuapp.com/feedback', user_feedback) 
+    //   .then(res => console.log(res.data))
+    //   .catch(function(error){
+    //     console.log(error)
+    //   },
+    //   this.props.history.push('/'))
+
+
+     console.log(user_feedback)
+     this.setState({
+        id: 0,
+        email: '',
+        text: '',
+        title: '',
+        name: "Anonymous",
+        upvotes: 0,
+        downvotes: 0,
+        ministry_assigned: "1",
+        userSentiment: "-1",
+        rating: "5",
+        policyDecision: "0",
+        language: "0",
+        userAge: 0,
+        userPincode: ""
+     })
   }
 
 
@@ -78,24 +149,27 @@ export default class CitizenFeedback extends Component {
       <div className = "PrivateFeedBack">
         <form onSubmit = {this.onSubmit}>
 
-          {/* Add Title Field */}
+          {/* Add User PinCode Field */}
           <div className = 'form-group'>
             <label>User Location Pincode :</label>
             <input type = "text" 
               className = "form-control"
-              value = {this.state.title}
-              onChange = {this.onChangeTitle}
+              value = {this.state.userPincode}
+              onChange = {this.onChangePincode}
             />
           </div>
+
+          {/* Add Age */}
           <div className = 'form-group'>
             <label>Age:</label>
             <input type = "text" 
               className = "form-control"
-              value = {this.state.title}
-              onChange = {this.onChangeTitle}
+              value = {this.state.userAge}
+              onChange = {this.onChangeAge}
             />
           </div>
 
+          {/* Add Policy Title */}
           <div className = 'form-group'>
             <label>Policy Title :</label>
             <input type = "text" 
@@ -104,6 +178,8 @@ export default class CitizenFeedback extends Component {
               onChange = {this.onChangeTitle}
             />
           </div>
+
+          
           
           {/* Enter Your FeedBack here */}
 
@@ -117,6 +193,40 @@ export default class CitizenFeedback extends Component {
               style = {{height: "150px", marginTop: "10px", resize: "none"}}
             />
           </div>
+
+          {/* Please Select the Language */}
+
+          <div className = 'form-group'>
+                <label>Please Select the Language :</label>
+                <br/>
+                <div className = "form-check form-check-inline">
+                  <input className = "form-check-input"
+                      type = "radio"
+                      name = "LanguageSelectedByUser"
+                      id = "hindi"
+                      value = "0"
+                      checked = {this.state.language === '0'}
+                      onChange = {this.onChangeLanguage}
+                  />
+
+                  <label className = "form-check-label">Hindi</label>
+                </div>
+
+
+                <div className = "form-check form-check-inline">
+                  <input className = "form-check-input"
+                      type = "radio"
+                      name = "LanguageSelectedByUser"
+                      id = "english"
+                      value = "1"
+                      checked = {this.state.language === '1'}
+                      onChange = {this.onChangeLanguage}
+                  />
+
+                  <label className = "form-check-label">English</label>
+                </div>
+          </div>
+
 
           {/* Are You Happy with this Policy */}
 
@@ -352,7 +462,7 @@ export default class CitizenFeedback extends Component {
               type = "submit" 
               value = "Submit Your Feedback" 
               className = "btn btn-primary"
-              disabled = {this.state.text && this.state.title? false : true}
+              disabled = {this.state.text && this.state.title && this.state.userAge && this.state.userPincode? false : true}
               style = {{fontSize : "15px"}} 
             /> 
           </div>

@@ -19,11 +19,11 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path = "/" component = {DashBoard} />                              // Base Landing Page
-          <Route exact path = "/admin_login" component = {Admin_register} />                  // Shift to Admin Login Page
-          <Route exact path = "/submit_feedback" component = {CitizenFeedback} />            // Submit FeedBack
+          <Route exact path = "/admin_login" component = {Admin_register} />              // Shift to Admin Login Page
+          <Route exact path = "/submit_feedback" component = {CitizenFeedback} />         // Submit FeedBack
           <Route exact path = "/citizen_access_page" component = {CitizenAccessPage}/>    // Citizen Lands on this Page
           <Route exact path = "/private_feedback" component = {PrivateFeedback} />        // Submit Private FeedBack
-          <Route exact path = "/register" component = {Do_register} />
+          <Route exact path = "/user_login" component = {Do_register} />
           <Route exact path = "/graph" component = {Graph} />
           <Route exact path = "/logout" component = {LogOut} />                           // LogOut
           <Route path = "/" component = {ErrorPage} />                                    // Default Error Page

@@ -20,12 +20,12 @@ function NavBar() {
       }, [])
 
     useEffect(() => {                                                                 //Used to SetAdminLoginStatus
-    {
-        localStorage.getItem('adminLogin') ?
-        setadminLoggedIn(true)
-        :
-        setadminLoggedIn(false)
-    }
+        {
+            localStorage.getItem('adminLogin') ?
+            setadminLoggedIn(true)
+            :
+            setadminLoggedIn(false)
+        }
     }, [])
 
     return (
@@ -35,6 +35,17 @@ function NavBar() {
                     <img className = "NavBar__logo" 
                     src = {NavLogo} />
                 </Link>
+            </div>
+
+            <div className = "NavBar__IVR">
+                <div className = "NavBar__IVR__Message">
+                    24 X 7 HelpLine
+                </div>
+
+                <div className = "NavBar__IVR__Call">
+                    12054489824
+                </div>
+
             </div>
             
             <div className = "NavBar__right">
@@ -55,6 +66,28 @@ function NavBar() {
 
                 <div className = "NavBar__right__content">
                     {
+                        userLoggedIn ? 
+                        <>
+                            <span className = "NavBar__right__option__1"> User </span>
+                             <Link to = "/logout">
+                                <span className = "NavBar__right__option__2"> LogOut </span>
+                            </Link>
+                        </>
+
+                        :
+
+                        <>
+                            <span className = "NavBar__right__option__1"> User </span>
+                             <Link to = "/user_login">
+                                <span className = "NavBar__right__option__2"> Login </span>
+                            </Link>   
+                        </>
+                    }
+                </div>
+
+
+                <div className = "NavBar__right__content">
+                    {
                         adminLoggedIn ?
                         <>
                             <span className = "NavBar__right__option__1"> AdminName </span>
@@ -68,25 +101,6 @@ function NavBar() {
                                 <Link to = "/admin_login">
                                     <span className = "NavBar__right__option__2"> Login </span>
                                 </Link>
-                        </>
-                    }
-
-                    {
-                        userLoggedIn ? 
-                        <>
-                            <span className = "NavBar__right__option__1"> User </span>
-                             <Link to = "/logout">
-                                <span className = "NavBar__right__option__2"> LogOut </span>
-                            </Link>
-                        </>
-
-                        :
-
-                        <>
-                            <span className = "NavBar__right__option__1"> User </span>
-                             <Link to = "/admin_login">
-                                <span className = "NavBar__right__option__2"> Login </span>
-                            </Link>   
                         </>
                     }
                 </div>

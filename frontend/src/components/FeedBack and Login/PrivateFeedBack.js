@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './PrivateFeedBack.css'
 import SendIcon from '@material-ui/icons/Send';
 import NavBar from '../NavBar/NavBar'
+import axios from 'axios';
 
 
 export default class PrivateFeedBack extends Component {
@@ -9,8 +10,8 @@ export default class PrivateFeedBack extends Component {
     super(props);
 
     this.state  = {
-        id: 0,                            //User Id      This will be 0 always, we will be dealing with this at backend
-        email: '',                        //User Email   This will be null always as we are dealing with anonymuos user
+        id: 0,                            // User Id      This will be 0 always, we will be dealing with this at backend
+        email: '',                        // User Email   This will be null always as we are dealing with anonymuos user
         title: '',                        // Policy Name
         name: "Anonymuos",                // User Name
         text: "",                         // FeedBack
@@ -20,8 +21,11 @@ export default class PrivateFeedBack extends Component {
         userSentiment: "-1",              // User Sentiment regarding the policy (Yes = 1, No = -1, Neutral = 0)
         rating: "5",                      // Rating for the Policy
         policyDecision: "0",              // Decision regarding Policy    0-> scrap it,, 1-> Can be implemented better
-        language: "0"                     // Language Hindi / English
-    }
+        language: "0",                     // Language Hindi / English
+        userPincode: 0,
+        userAge: 0,
+
+      }
 
     this.onChangeUserSentiment = this.onChangeUserSentiment.bind(this)
     this.onChangeRating = this.onChangeRating.bind(this)
@@ -91,10 +95,19 @@ export default class PrivateFeedBack extends Component {
           userSentiment: this.state.userSentiment,
           rating: this.state.rating,
           policyDecision: this.state.policyDecision,
-          language: this.state.language
+          language: this.state.language,
+          userPincode: this.state.userPincode,
+          userAge: this.state.userAge
      }
 
+    //  axios.post('http://civis19.herokuapp.com/feedback', user_feedback) 
+    //   .then(res => console.log(res.data))
+    //   .catch(function(error){
+    //     console.log(error)
+    //   },
+    //   this.props.history.push('/'))
 
+  
      console.log(user_feedback)
      this.setState({
         id: 0,
@@ -147,7 +160,7 @@ export default class PrivateFeedBack extends Component {
           {/* Language Selected by the user */}
 
           <div className = 'form-group'>
-                <label>What do you feel about this policy :</label>
+                <label>Please select the Language :</label>
                 <br/>
                 <div className = "form-check form-check-inline">
                   <input className = "form-check-input"

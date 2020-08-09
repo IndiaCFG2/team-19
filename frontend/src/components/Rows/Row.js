@@ -20,7 +20,7 @@ export default class Row extends Component {
                     ministry_assigned: 1,
                     userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
                     rating: "5",                      // Rating for the Policy
-                    policyDecision: "0",               // Decision regarding Policy
+                    policyDecision: "0",              // Decision regarding Policy
                     language: "0"
                 },
                 {
@@ -33,7 +33,7 @@ export default class Row extends Component {
                   ministry_assigned: 1,
                   userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
                   rating: "5",                      // Rating for the Policy
-                  policyDecision: "0",               // Decision regarding Policy
+                  policyDecision: "0",              // Decision regarding Policy
                   language: "0"
                 },
                 {
@@ -46,7 +46,7 @@ export default class Row extends Component {
                   ministry_assigned: 1,
                   userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
                   rating: "5",                      // Rating for the Policy
-                  policyDecision: "0",               // Decision regarding Policy
+                  policyDecision: "0",              // Decision regarding Policy
                   language: "0"
                 },
                 {
@@ -59,7 +59,7 @@ export default class Row extends Component {
                   ministry_assigned: 1,
                   userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
                   rating: "5",                      // Rating for the Policy
-                  policyDecision: "0",               // Decision regarding Policy,
+                  policyDecision: "0",              // Decision regarding Policy,
                   language: "0"
                   
                 },
@@ -73,7 +73,7 @@ export default class Row extends Component {
                   ministry_assigned: 1,
                   userSentiment: "-1",              // User Sentiment regarding the policy (Yes, No, Neutral)
                   rating: "5",                      // Rating for the Policy
-                  policyDecision: "0",               // Decision regarding Policy
+                  policyDecision: "0",              // Decision regarding Policy
                   language: "0"
                 },
             ]
